@@ -1,27 +1,27 @@
-# fantasy
-Fantasy League Toolkit Generator for ESPN Leagues
+# Fantasy Football
+[FORKED]Fantasy League Toolkit Generator for ESPN Leagues
 
-Tutorial here:
-https://www.reddit.com/r/fantasyfootball/comments/526bhh/espn_leagues_add_nice_looking_htmlcss_power/
+## Changes from the original
+> 1. This forked repo focuses on leagues where decimal (or floating) point scoring is used.
+> 2. The database schema has been modified from the [original](https://github.com/jpmayer/fantasy) to support decimal scoring
 
-CLI commands:
+[reddit Tutorial Page](https://www.reddit.com/r/fantasyfootball/comments/526bhh/espn_leagues_add_nice_looking_htmlcss_power/)
 
-python parseOldYear.py [year] > [filename]
+## CLI commands:
+> * python parseOldYear.py [year] > [filename]
+> * *Example*: python parseOldYear.py 2013 > temp.txt
 
-python parseOldYear.py 2013 > temp.txt
+> * python parseYear.py [year] > [filename]
+> * *Example:* python parseYear.py 2015 > temp.txt
 
-python parseYear.py [year] > [filename]
+> * python allTimeWins.py
 
-python parseYear.py 2015 > temp.txt
+> * python recordBook.py
 
-python allTimeWins.py
+> * python powerRanking.py
 
-python recordBook.py
+> * python powerRanking.py [filename]
+> * *Example:* python powerRanking.py preseason.txt
 
-python powerRanking.py
-
-python powerRanking.py [filename]
-python powerRanking.py preseason.txt
-
-python parseWeek.py [filename]
-python parseWeek.py weekOne2016.txt
+> * python parseWeek.py [filename]
+> * python parseWeek.py weekOne2016.txt

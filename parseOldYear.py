@@ -16,8 +16,8 @@ if len(sys.argv) == 2:
     playerIsAway = False;
     homePlayers = []
     awayPlayers = []
-    homePlayerScore = 0;
-    awayPlayerScore = 0;
+    homePlayerScore = 0.0;
+    awayPlayerScore = 0.0;
     isAway = True
     week = 1
     for line in lines:
@@ -28,12 +28,12 @@ if len(sys.argv) == 2:
         else:
           managerOpp = lines[(trueCount - 28)]
       elif count % 3 == 0:
-        playerScore = line.split('\t')[1]
+        playerScore = line.split()[2]
         print("INSERT INTO history (manager, week, year, vs, player, playerPosition, score, isHomeGame) VALUES ('" + manager + "', " + str(week) + ", " + str(year) + ", '" + managerOpp + "', '" + player.replace("'", r"") + "', '" + playerPos + "', '" + str(playerScore) + "', '" + str(int(not isAway)) + "');")
         if isAway == True:
-            awayPlayerScore = awayPlayerScore + int(playerScore)
+            awayPlayerScore = awayPlayerScore + float(playerScore)
         else:
-            homePlayerScore = homePlayerScore + int(playerScore)
+            homePlayerScore = homePlayerScore + float(playerScore)
         if count == 27:
           count = -1
           isAway = not isAway
@@ -47,7 +47,7 @@ if len(sys.argv) == 2:
       if trueCount % 56 == 0:
           awayManager = ''
           homeManager = ''
-          homeFieldAdvantage = 2 if week < 14 else 0
+          homeFieldAdvantage = 0.0
           awayPointDiff = awayPlayerScore - (homePlayerScore + homeFieldAdvantage)
           homePointDiff = -awayPointDiff
           if isAway == True:
@@ -58,25 +58,25 @@ if len(sys.argv) == 2:
               homeManager = managerOpp
           awayWinLoss = 'win'
           homeWinLoss = 'loss'
-          if awayPointDiff == 0:
+          if awayPointDiff == 0.0:
               awayWinLoss = 'tie'
               homeWinLoss = 'tie'
-          elif awayPointDiff < 0:
+          elif awayPointDiff < 0.0:
               awayWinLoss = 'loss'
               homeWinLoss = 'win'
           #home
           print("INSERT INTO matchups (manager, week, year, vs, isHomeGame, winLoss, score, matchupTotal, pointDiff) VALUES ('" + homeManager + "', " + str(week) + ", " + str(year) + ", '" + awayManager + "', '" + str(1) + "', '" + homeWinLoss + "', '" + str(homePlayerScore + homeFieldAdvantage) + "', '" + str(homePlayerScore + homeFieldAdvantage + awayPlayerScore) + "', '" + str(homePointDiff) + "');")
           #away
           print("INSERT INTO matchups (manager, week, year, vs, isHomeGame, winLoss, score, matchupTotal, pointDiff) VALUES ('" + awayManager + "', " + str(week) + ", " + str(year) + ", '" + homeManager + "', '" + str(0) + "', '" + awayWinLoss + "', '" + str(awayPlayerScore) + "', '" + str(homePlayerScore + homeFieldAdvantage + awayPlayerScore) + "', '" + str(awayPointDiff) + "');")
-          awayPlayerScore = 0
-          homePlayerScore = 0
-      if trueCount % ( (1 + 3 * numOfPlayers) * numberOfTeams ) == 0:
+          awayPlayerScore = 0.0
+          homePlayerScore = 0.0
+      if trueCount % ( (1 + 3 * numOfPlayers) * 10 ) == 0:
           week = week + 1
       if week == 16 and trueCount % ( (1 + 3 * numOfPlayers) * 2 ) == 0:
           week = week + 1
       elif week == 15 and trueCount % ( (1 + 3 * numOfPlayers) * 4 ) == 0:
           week = week + 1
-      elif week == 14 and trueCount % ( ( (1 + 3 * numOfPlayers) * numberOfTeams ) + (1 + 3 * numOfPlayers) * getNumTeamsInRoundOneOfPlayoffs() ) == 0:
+      elif week == 14 and trueCount % ( ( (1 + 3 * numOfPlayers) * 10 ) + (1 + 3 * numOfPlayers) * getNumTeamsInRoundOneOfPlayoffs() ) == 0:
           week = week + 1
 else:
-    print("Wrong Arguments. Please input year")
+    print "Wrong Arguments. Please input year"
