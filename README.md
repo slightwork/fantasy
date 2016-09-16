@@ -3,8 +3,9 @@ Fantasy League Toolkit Generator for ESPN Leagues
 
 ## Changes from the original
 1. This forked repo focuses on leagues where decimal (or floating) point scoring is used.
-2. The database schema has been modified from the [original](https://github.com/jpmayer/fantasy) to support decimal scoring
+2. The database schema has been modified from the [original](https://github.com/jpmayer/fantasy) to support decimal scoring.
 3. __NOTE__: This repo assumes you have familiarity with the [original](https://github.com/jpmayer/fantasy) project already.
+4. We don't use home field advantages at all, so...yeah.
 
 [reddit Tutorial Page](https://www.reddit.com/r/fantasyfootball/comments/526bhh/espn_leagues_add_nice_looking_htmlcss_power/)
 
