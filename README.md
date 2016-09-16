@@ -1,11 +1,14 @@
 # Fantasy Football
-[FORKED]Fantasy League Toolkit Generator for ESPN Leagues
+Fantasy League Toolkit Generator for ESPN Leagues
 
 ## Changes from the original
 > 1. This forked repo focuses on leagues where decimal (or floating) point scoring is used.
 > 2. The database schema has been modified from the [original](https://github.com/jpmayer/fantasy) to support decimal scoring
+> * __NOTE__: This repo assumes you have familiarity with the [original](https://github.com/jpmayer/fantasy) project already.
 
 [reddit Tutorial Page](https://www.reddit.com/r/fantasyfootball/comments/526bhh/espn_leagues_add_nice_looking_htmlcss_power/)
+
+
 
 ## CLI commands:
 > * python parseOldYear.py [year] > [filename]
